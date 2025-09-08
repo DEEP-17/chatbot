@@ -1,0 +1,52 @@
+Deep Patel
+Gandhinagar,Gujarat,India
+(cid:211)+91 9106171024  pateldeep17042004@gmail.com  linkedin.com/in/pateldeep1704 (cid:135) github.com/DEEP-17
+CodeForces LeetCode
+Education
+Nirma University Oct 2022 – May 2026
+Btech,Computer Science and Engineering Cgpa:8.69
+Kameshwar Vidhyamandir Jul 2021 – Mar 2022
+Class 12 PCM Percentage:93%
+Shree Sahajanand Secondary and Higher Secondary School Jul 2019 – Mar 2020
+Class 10 Percentage:91%
+Relevant Coursework
+• Data Structures and • Mathematics for • Object Oriented • Digital Communication
+Algorithms Computer Science Programming • Computer Architecture
+• Operating Systems • Artificial Intelligence • Database Management
+Experience
+Hamari Pehchan  August 2023
+Social Internship Virtual
+• Oversaw social awareness campaigns at the NGO Hamari Pehchan using social media to connect and interact with a wide
+range of people.
+• Curated powerful content that brought attention to social issues resulting in meaningful interactions and promoting a
+proactive socially responsible culture.
+• Dealt with social issues such as Child labor and Women empowerment.
+Projects
+J.A.R.V.I.S | Python,Visual Studio code (cid:135) Mar 2023
+• Engineered a voice-controlled personal assistant named Jarvis using Python for interactive voice recognition and
+response.
+• Enabled features like YouTube music streaming, live time/date announcements, and Wikipedia information retrieval.
+• Enhanced user interaction with responsive verbal communication and robust error management.
+Social Media Network Functionalities | C++, Visual Studio Code (cid:135) November 2023
+• Created a consol based program on Social Network Functionalities using data structures like Graph and Linked List.
+• Ensured efficient traversal and manipulation of linked lists to maintain optimal performance even as the network grows.
+• The project contains functions like adding a user to the network,Finding Mutual Friends of two users,Displaying a user’s
+friend list.
+Personal Portfolio Website | Html,Css,Javascript,Visual Studio code (cid:135) June 2024
+• Crafted a thorough personal portfolio website that showcases my accomplishments and professional journey.
+• Integrated a dynamic theme switcher to allow for smooth transitions between Light and Dark modes for better user
+preference.
+• Implemented a customizable color palette via an interactive sidebar, allowing visitors to personalize their viewing
+experience.
+Technical Skills
+Languages: C++,Python, Java, C, HTML,CSS, JavaScript, SQL
+Developer Tools:Visual Studio Code, Intellij Idea, SqlPlus
+Technologies/Frameworks: Tailwind, Bootstrap, GitHub
+Leadership / Extracurricular
+Smart India Hackathon | Group member 
+• Worked as a team to take part in the smart india hackathon.
+• Proposed the idea of Self-identifying the mental health status and get guidance for support.
+CodeAdda | Member
+• Involved in the club centered around Competitive Programming.
+Computer Society of India | Member
+• Involved in the club centered around programming and development.

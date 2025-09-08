@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Chatbot</title>
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        #chat-output {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="max-w-md mx-auto mt-10 p-4 bg-white rounded-lg shadow-lg">
+        <h1 class="text-2xl font-bold text-center mb-4">Resume Chatbot</h1>
+        <div id="chat-output" class="bg-gray-50 p-4 rounded-md mb-4"></div>
+        <div class="flex">
+            <input
+                type="text"
+                id="chat-input"
+                placeholder="Ask about my resume..."
+                class="flex-1 p-2 rounded-l-md border focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+            <button
+                onclick="sendMessage()"
+                class="bg-blue-500 text-white p-2 rounded-r-md hover:bg-blue-600"
+            >
+                Send
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function sendMessage() {
+            const input = $("#chat-input").val().trim();
+            if (!input) return;
+
+            // Add user message to chat
+            $("#chat-output").append(
+                `<div class="mb-2 text-right"><span class="inline-block p-2 rounded-lg bg-blue-500 text-white">${input}</span></div>`
+            );
+            $("#chat-input").val("");
+
+            // Send message to FastAPI backend
+            $.ajax({
+                url: "/chat",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify({ message: input }),
+                success: function (data) {
+                    if (data.response) {
+                        $("#chat-output").append(
+                            `<div class="mb-2 text-left"><span class="inline-block p-2 rounded-lg bg-gray-200 text-gray-800">${data.response}</span></div>`
+                        );
+                    } else if (data.error) {
+                        $("#chat-output").append(
+                            `<div class="mb-2 text-left"><span class="inline-block p-2 rounded-lg bg-red-200 text-red-800">Error: ${data.error}</span></div>`
+                        );
+                    }
+                    // Scroll to bottom
+                    $("#chat-output").scrollTop($("#chat-output")[0].scrollHeight);
+                },
+                error: function () {
+                    $("#chat-output").append(
+                        `<div class="mb-2 text-left"><span class="inline-block p-2 rounded-lg bg-red-200 text-red-800">Error: Unable to connect to the server.</span></div>`
+                    );
+                    $("#chat-output").scrollTop($("#chat-output")[0].scrollHeight);
+                },
+            });
+        }
+
+        // Handle Enter key press
+        $("#chat-input").keypress(function (e) {
+            if (e.which === 13) sendMessage();
+        });
+    </script>
+</body>
+</html>

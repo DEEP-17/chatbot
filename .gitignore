@@ -1,0 +1,42 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+.eggs/
+*.log
+
+# ---- Virtual environment ----
+venv/
+ENV/
+env/
+.venv/
+
+# ---- Flask / FastAPI specific ----
+instance/
+.werkzeug/
+*.db
+*.sqlite3
+
+# ---- IDE / Editors ----
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ---- OS files ----
+.DS_Store
+Thumbs.db
+
+# ---- Build / cache ----
+*.out
+*.class
+*.o
+*.obj
+*.exe
+
+# ---- Resume / Generated files ----
+resume.pdf
