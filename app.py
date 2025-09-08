@@ -10,7 +10,7 @@ app = FastAPI()
 # Enable CORS to allow requests from HTML frontend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # In production, replace with your frontend URL
+    allow_origins=["https://deepz.me"],  # In production, replace with your frontend URL
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
