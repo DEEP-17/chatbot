@@ -5,20 +5,26 @@ from pydantic import BaseModel
 import google.generativeai as genai
 import pdfplumber
 import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 app = FastAPI()
-# Enable CORS to allow requests from HTML frontend
+# Enable CORS to allow requests only from deepz.me
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # In production, replace with your frontend URL
+    allow_origins=["https://deepz.me"],  # Only allow requests from your frontend
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["GET", "POST"],  # Only allow necessary HTTP methods
     allow_headers=["*"],
 )
 # Serve static files (HTML frontend)
 app.mount("/static", StaticFiles(directory="static"), name="static")
 # Configure Gemini API
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "AIzaSyBoXOTLzLIUNiX0gA7rwEMIB5eAdPaKvuQ")
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+if not GEMINI_API_KEY:
+    raise ValueError("GEMINI_API_KEY not found in environment variables. Please set it in the .env file")
 genai.configure(api_key=GEMINI_API_KEY)
 # Extract text from resume PDF or read from resume.txt
 def extract_resume_text(pdf_path="resume.pdf", txt_path="resume.txt"):
