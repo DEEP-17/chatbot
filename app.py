@@ -11,14 +11,20 @@ from dotenv import load_dotenv
 load_dotenv()
 
 app = FastAPI()
-# Enable CORS to allow requests only from deepz.me
+# Configure CORS to allow requests from your frontend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://deepz.me"],  # Only allow requests from your frontend
+    allow_origins=["https://deepz.me"],
     allow_credentials=True,
-    allow_methods=["GET", "POST"],  # Only allow necessary HTTP methods
+    allow_methods=["GET", "POST", "OPTIONS"],  # Add OPTIONS method
     allow_headers=["*"],
+    expose_headers=["*"],
 )
+
+# Handle OPTIONS requests for /chat endpoint
+@app.options("/chat", status_code=200)
+async def options_route():
+    return {"status": "ok"}
 # Serve static files (HTML frontend)
 app.mount("/static", StaticFiles(directory="static"), name="static")
 # Configure Gemini API
