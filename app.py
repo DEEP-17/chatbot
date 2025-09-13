@@ -11,19 +11,25 @@ from dotenv import load_dotenv
 load_dotenv()
 
 app = FastAPI()
-# Configure CORS to allow requests from your frontend
+
+# Configure CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://deepz.me"],
+    allow_origins=["https://deepz.me", "https://www.deepz.me"],  # Add both www and non-www
     allow_credentials=True,
-    allow_methods=["GET", "POST", "OPTIONS"],  # Add OPTIONS method
+    allow_methods=["*"],  # Temporarily allow all methods for debugging
     allow_headers=["*"],
     expose_headers=["*"],
 )
 
-# Handle OPTIONS requests for /chat endpoint
-@app.options("/chat", status_code=200)
-async def options_route():
+# Root endpoint
+@app.get("/")
+async def root():
+    return {"status": "API is running"}
+
+# Handle OPTIONS requests for all endpoints
+@app.options("/{full_path:path}", status_code=200, include_in_schema=False)
+async def options_route(full_path: str):
     return {"status": "ok"}
 # Serve static files (HTML frontend)
 app.mount("/static", StaticFiles(directory="static"), name="static")
