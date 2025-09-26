@@ -112,16 +112,21 @@ async def chat(message: ChatMessage):
         """
 
         # Initialize Gemini model
-        model = genai.GenerativeModel("gemini-1.5-flash")
-        
-        # Generate response using Gemini API
-        response = model.generate_content(
-            f"{resume_context}\n\nUser: {message.message}"
-        )
-        
-        # Extract the response text
-        response_text = response.text.strip()
-        return {"response": response_text}
+        try:
+            # Using the latest stable Gemini model
+            model = genai.GenerativeModel("gemini-1.5-pro")
+            
+            # Generate response using Gemini API
+            response = model.generate_content(
+                f"{resume_context}\n\nUser: {message.message}"
+            )
+            
+            # Extract the response text
+            response_text = response.text.strip()
+            return {"response": response_text}
+            
+        except Exception as model_error:
+            return {"error": f"Error with the AI model: {str(model_error)}"}
 
     except Exception as e:
         return {"error": str(e)}
