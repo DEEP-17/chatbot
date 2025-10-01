@@ -114,7 +114,7 @@ async def chat(message: ChatMessage):
         # Initialize Gemini model
         try:
             # Using the latest stable Gemini model
-            model = genai.GenerativeModel("gemini-1.5-pro")
+            model = genai.GenerativeModel("gemini-2.5-flash")
             
             # Generate response using Gemini API
             response = model.generate_content(
